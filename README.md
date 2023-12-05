@@ -5,16 +5,11 @@
 <p align="center"><b>This is the snap for Pogo</b>, <i>“A fast and minimalist audio player for Linux”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
-<!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
 <a href="https://snapcraft.io/my-snap-name">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/badge.svg" />
-</a>
-<a href="https://snapcraft.io/my-snap-name">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/trending.svg?name=0" />
+  <img alt="enpass" src="https://snapcraft.io/pogo/badge.svg" />
 </a>
 </p>
--->
 
 <p align="center"><img alt="Pogo" src="https://github.com/ymauray/pogo-snap/raw/main/screenshot.png"/></p>
 
