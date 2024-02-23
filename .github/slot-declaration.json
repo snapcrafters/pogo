@@ -1,0 +1,11 @@
+{
+    "dbus": {
+        "allow-connection": {
+            "slot-attributes": {
+                "bus": "session",
+                "name": "org.mpris.pogo"
+            }
+        }
+    },
+    "mpris": { "allow-connection": true }
+}
