@@ -1,6 +1,6 @@
 name: pogo
-adopt-info: pogo
-base: core20
+version: "1.0.1"
+base: core22
 summary: A fast and minimalist audio player for Linux
 description: |
   Pogo is a fast and minimalist audio player for Linux. It
@@ -32,40 +32,35 @@ parts:
   pogo:
     plugin: nil
     source: https://github.com/jendrikseipp/pogo.git
-    source-tag: v1.0.1
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags)"
-      git apply $SNAPCRAFT_STAGE/snap.patch
+    source-tag: v$SNAPCRAFT_PROJECT_VERSION
     override-build: |
-      prefix=$SNAPCRAFT_PART_INSTALL make install
-      sed -i 's/^prefix = .*/import os\nprefix = os.environ.get("SNAP")/g' $SNAPCRAFT_PART_INSTALL/bin/pogo
+      git apply $CRAFT_PROJECT_DIR/snap/local/patches/snap.patch
+      prefix=$CRAFT_PART_INSTALL make install
+      sed -i 's/^prefix = .*/import os\nprefix = os.environ.get("SNAP")/g' $CRAFT_PART_INSTALL/bin/pogo
     build-packages:
       - gettext
     stage-packages:
       - freeglut3
+      - gir1.2-gdkpixbuf-2.0
+      - gir1.2-glib-2.0
       - gir1.2-gstreamer-1.0
+      - gir1.2-gtk-3.0
       - gir1.2-notify-0.7
+      - gir1.2-pango-1.0
       - gstreamer1.0-plugins-base
       - gstreamer1.0-plugins-good
       - gstreamer1.0-pulseaudio
       - libglu1-mesa
       - libgpm2
       - libslang2
+      - python3-dbus
+      - python3-gi
       - python3-mutagen
       - python3-pil
     override-prime: |
-      snapcraftctl prime
+      craftctl default
       sed -i 's/Icon=pogo/Icon=${SNAP}\/share\/pogo\/pix\/pogo-192.png/g' share/applications/pogo.desktop
-    after:
-       - patches
-       
-  patches:
-    source: snap/local/patches
-    plugin: dump
-    prime:
-      - -*
-      
+
   cleanup:
     after:
       - pogo
@@ -73,20 +68,19 @@ parts:
     override-prime: |
       set -eux
       for CRUFT in bug lintian man; do
-        rm -rf $SNAPCRAFT_PRIME/usr/share/$CRUFT
+        rm -rf $CRAFT_PRIME/usr/share/$CRUFT
       done
-      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
+      find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $CRAFT_PRIME/usr/share -type d -empty -delete
 
 apps:
   pogo:
-    extensions:
-      - gnome-3-38
+    extensions: [gnome]
     command: bin/pogo
     environment:
-      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages:$PYTHONPATH
-      LD_LIBRARY_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
-      GI_TYPELIB_PATH: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/girepository-1.0
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$SNAP_DESKTOP_RUNTIME/usr/lib/python3.10/site-packages:$PYTHONPATH
+      LD_LIBRARY_PATH: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
+      GI_TYPELIB_PATH: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/girepository-1.0
     desktop: share/applications/pogo.desktop
     plugs:
       - network-bind
