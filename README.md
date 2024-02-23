@@ -6,17 +6,13 @@
 distributions.</p>
 
 <p align="center">
-<a href="https://snapcraft.io/my-snap-name">
-  <img alt="enpass" src="https://snapcraft.io/pogo/badge.svg" />
-</a>
+  <a href="https://snapcraft.io/pogo"><img alt="Snap Badge" src="https://snapcraft.io/pogo/badge.svg" /></a>
+  <a href="https://github.com/snapcrafters/pogo/actions/workflows/sync-upstream.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/sync-upstream.yml/badge.svg"></a>
+  <a href="https://github.com/snapcrafters/pogo/actions/workflows/release-to-candidate.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/release-to-candidate.yml/badge.svg"></a>
+  <a href="https://github.com/snapcrafters/pogo/actions/workflows/promote-to-stable.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/promote-to-stable.yml/badge.svg"></a>
 </p>
 
 <p align="center"><img alt="Pogo" src="https://github.com/ymauray/pogo-snap/raw/main/screenshot.png"/></p>
-
-<a href="https://snapcraft.io/pogo"><img alt="Snap Badge" src="https://snapcraft.io/pogo/badge.svg" /></a>
-<a href="https://github.com/snapcrafters/pogo/actions/workflows/sync-upstream.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/sync-upstream.yml/badge.svg"></a>
-<a href="https://github.com/snapcrafters/pogo/actions/workflows/release-to-candidate.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/release-to-candidate.yml/badge.svg"></a>
-<a href="https://github.com/snapcrafters/pogo/actions/workflows/promote-to-stable.yml"><img src="https://github.com/snapcrafters/pogo/actions/workflows/promote-to-stable.yml/badge.svg"></a>
 
 <p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with 💝 by Snapcrafters</p>
 
